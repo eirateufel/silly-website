@@ -7,21 +7,40 @@
   pointer-events: none;
 }
 
+.volken {
+  height: 25vmin;
+  position: absolute;
+  bottom: 0;
+}
+
+.angel {
+  height: 25vmin;
+  position: absolute;
+  bottom: -10px;
+  left: 20vmax;
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+    animation: App-logo-spin infinite 10s linear;
+  }
+
+  .angel {
+    animation: angel-spin infinite 10s linear;
   }
 }
 
 .App-header {
+  position: relative;
   background-color: #282c34;
-  min-height: 30vh;
+  min-height: 50vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+  overflow: hidden;
 }
 
 .App-link {
@@ -29,11 +48,32 @@
 }
 
 @keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+  25% {
+    transform: rotate(15deg) translate(100px,0px);
   }
-  to {
-    transform: rotate(360deg);
+  75% {
+    transform: rotate(-15deg) translate(-100px,0px);
+  }
+  100% {
+    transform: rotate(0deg) translate(0px,0px);
+  }
+}
+
+@keyframes angel-spin {
+  5% {
+    transform: translate(0,25vmin);
+  }
+  65% {
+    transform: translate(0,25vmin);
+  }
+  75% {
+    transform: translate(0,15vmin);
+  }
+  89% {
+    transform: translate(0,9vmin);
+  }
+  100% {
+    transform: translate(0px,0px);
   }
 }
 
@@ -50,4 +90,11 @@
   background-color:rgb(38, 40, 49);
   text-align: center;
   font-size: 1px;
+}
+
+.blob {
+  height: 50px;
+  width: 50px;
+  background-color: brown;
+  border-radius: 50%;
 }
