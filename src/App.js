@@ -1,5 +1,14 @@
-//import logo from './logo.svg';
+import logo from './kittens.png';
+import volken from './volken.png';
+import angel from './angel.png'
 import './App.css';
+
+document.addEventListener("contextmenu", (event) => {
+  event.preventDefault();
+  console.log("Right click");
+  //const element = document.elementFromPoint(event.pageX, event.pageY);
+  console.log(event.pageX, event.pageY)
+});
 
 function GridItem(props) {
   return <div 
@@ -22,6 +31,10 @@ function changeColor(e) {
     [indexLast] : Math.floor(Math.random()*(228 - 151)) + 151
   }
   e.target.style.backgroundColor = `rgb(${rgbValues[0]}, ${rgbValues[1]}, ${rgbValues[2]})`;
+
+  if (e.type === 'contextmenu') {
+    console.log('Right click');
+  }
 }
 
 function App() {
@@ -31,8 +44,9 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src="https://images-na.ssl-images-amazon.com/images/I/914%2BTmOpT3L._AC_SY741_.jpg" className="App-logo" alt="logo" />
-
+        <img src={logo} className="App-logo" alt="logo" />
+        <img src={volken} className="volken" />
+        <img src={angel} className="angel" />
       </header>
       <div className="grid-container">
         {items}
@@ -42,14 +56,3 @@ function App() {
 }
 
 export default App;
-
-/**
- * <a
-      className="App-link"
-      href="https://reactjs.org"
-      target="_blank"
-      rel="noopener noreferrer"
-    >
-      Learn React
-    </a>
- */
