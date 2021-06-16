@@ -25,6 +25,8 @@ if (vh() > vw() * 1) {
   document.getElementById("header").style.height = "33vh";
   document.getElementById("kittens").style.width = "25vmin";
   document.getElementById("volken").style.height = "20vmin";
+  document.getElementById("flower").style.height = "29vh";
+  document.getElementById("flower").style.top = "5px";
 }
 
 reportWebVitals();

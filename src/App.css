@@ -26,6 +26,22 @@
   z-index: 3;
 }
 
+.rezin {
+  height: 15vmin;
+  position: absolute;
+  bottom: 10px;
+  right: 20px;
+  z-index: 3;
+}
+
+.flower {
+  height: 20vw;
+  position: absolute;
+  top: 10px;
+  left: 20px;
+  z-index: -1;
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .kittens {
     animation: kittens-spin infinite 10s linear;
@@ -33,6 +49,10 @@
 
   .angel {
     animation: angel-spin infinite 10s linear;
+  }
+
+  .rezin {
+    animation: rezin-shake infinite 10s linear;
   }
 }
 
@@ -81,6 +101,24 @@
   }
   100% {
     transform: translate(0px,0px);
+  }
+}
+
+@keyframes rezin-shake {
+  1% {
+    transform: rotate(0deg);
+  }
+  95% {
+    transform: rotate(0deg);
+  }
+  96% {
+    transform: rotate(10deg);
+  }
+  98%{
+    transform: rotate(-5deg);
+  }
+  100%{
+    transform: rotate(0deg);
   }
 }
 
