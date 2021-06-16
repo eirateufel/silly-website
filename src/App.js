@@ -69,7 +69,7 @@ function App() {
     <div className="App">
       <header className="App-header" id="header" onClick = {(e) => changeKittensAnimation(e)}>
         <img src={kittens} className="kittens" alt="kittens" id="kittens"/>
-        <img src={volken} className="volken" alt="clouds" />
+        <img src={volken} className="volken" alt="clouds" id="volken"/>
         <img src={angel} className="angel" alt="angel" id="angel" onClick = {(e) => changeAngelAnimation(e)}/>
       </header>
       <div className="grid-container">
