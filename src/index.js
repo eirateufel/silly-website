@@ -27,6 +27,8 @@ if (vh() > vw() * 1) {
   document.getElementById("volken").style.height = "20vmin";
   document.getElementById("flower").style.height = "29vh";
   document.getElementById("flower").style.top = "5px";
+  document.getElementById("grid-container").style.gridTemplateColumns = "repeat(auto-fill, minmax(calc(100vw/60), 1fr))";
+  document.getElementById("grid-container").style.gridAutoRows = "calc(100vw/60)";
 }
 
 reportWebVitals();

@@ -100,7 +100,7 @@ function App() {
         <img src={rezin} className="rezin rezin_unchozen" alt="eraze" id="rezin" onClick = {(e) => chooseErazor(e)}/>
         <img src={flower} className="flower" id="flower"/>
       </header>
-      <div className="grid-container">
+      <div className="grid-container" id="grid-container">
         {items}
       </div>
     </div>
