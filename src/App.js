@@ -8,7 +8,8 @@ import {vmin, vmax, vw, vh} from "./lib/VminVmax";
 function GridItem(props) {
   return <div 
       className="grid-item"
-      onClick={changeColor}
+      onClick={props.onClick}
+      id={props.id}
     ></div>
 }
 
@@ -63,7 +64,7 @@ function changeAngelAnimation (e) {
 
 function App() {
   let items = [];
-  for (let i = 1; i < 5100; i++) items.push(<GridItem num={i} key={i} onClick = {(e) => changeColor(e)} />)
+  for (let i = 1; i < 5000; i++) items.push(<GridItem id={i} key={i} onClick = {(e) => changeColor(e)} />)
 
   return (
     <div className="App">

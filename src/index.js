@@ -15,9 +15,8 @@ ReactDOM.render(
 
 document.addEventListener("contextmenu", (event) => {
   event.preventDefault();
-  const element = document.elementFromPoint(event.pageX, event.pageY);
-  console.log("ELEMENT", element)
-  if (element.classList[0] === "grid-item") {
+  const element = document.elementFromPoint(event.pageX - window.scrollX, event.pageY - window.scrollY);
+  if (element && element.classList !== null && element.classList[0] === "grid-item") {
     element.style.backgroundColor = "rgb(38, 40, 49)";
   }
 });
