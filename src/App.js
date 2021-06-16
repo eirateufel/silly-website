@@ -3,6 +3,7 @@ import volken from './volken.png';
 import angel from './angel.png'
 import './App.css';
 import React from 'react';
+import {vmin, vmax, vw, vh} from "./lib/VminVmax";
 
 function GridItem(props) {
   return <div 
@@ -36,14 +37,23 @@ function changeAnimation (target) {
 }
 
 function changeKittensAnimation (e) {
-  const isKittens = ((e.pageX > 0.5 * vmax() - 0.28 * vmin() && e.pageX < 0.5 * vmax() + 0.28 * vmin()) && (e.pageY < 0.5 * document.documentElement.clientHeight - 0.10 * vmin() && e.pageY > 0.5 * document.documentElement.clientHeight - 0.45 * vmin()))
-  console.log("Kittens", isKittens)
-  console.log("Y", e.pageY)
-  console.log("result", 0.5 * document.documentElement.clientHeight - 0.45 * vmin())
-  console.log("0.25 vmin",0.25 * vmin())
-  console.log("header height", 0.5 * document.documentElement.clientHeight)
+  /*const kittens = document.getElementById("kittens");
+  console.log("kittens", kittens.getBoundingClientRect())*/
+
+  const heightCoefficient1 = vw() < 450 ? 0.3 : 0.5
+
+  const isKittens = (
+    (e.pageX > 0.5 * vmax() - 0.28 * vmin() 
+    && e.pageX < 0.5 * vmax() + 0.28 * vmin()) 
+    && (e.pageY < heightCoefficient1 * vh() - 0.10 * vmin() 
+    && e.pageY > heightCoefficient1 * vh() - 0.45 * vmin()))
 
   if (isKittens) changeAnimation (document.getElementById("kittens"))
+
+  /*const element = document.elementFromPoint(e.pageX, e.pageY);
+  console.log("Element", element)
+  const angel = document.getElementById("angel");
+  console.log("Angel", angel.getBoundingClientRect())*/
 }
 
 function changeAngelAnimation (e) {
@@ -58,9 +68,9 @@ function App() {
   return (
     <div className="App">
       <header className="App-header" id="header" onClick = {(e) => changeKittensAnimation(e)}>
-        <img src={kittens} className="kittens" alt="logo" id="kittens"/>
+        <img src={kittens} className="kittens" alt="kittens" id="kittens"/>
         <img src={volken} className="volken" alt="clouds" />
-        <img src={angel} className="angel" alt="angel" onClick = {(e) => changeAngelAnimation(e)}/>
+        <img src={angel} className="angel" alt="angel" id="angel" onClick = {(e) => changeAngelAnimation(e)}/>
       </header>
       <div className="grid-container">
         {items}
@@ -70,22 +80,3 @@ function App() {
 }
 
 export default App;
-
-
-function vh() {
-  var h = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
-  return h;
-}
-
-function vw() {
-  var w = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
-  return w;
-}
-
-function vmin() {
-  return Math.min(vh(), vw());
-}
-
-function vmax() {
-  return Math.max(vh(), vw());
-}
