@@ -2,15 +2,20 @@
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
+.kittens {
+  width: 30vmin;
   pointer-events: none;
+  position: absolute;
+  bottom: 7vmin;
+  left: calc(50vmax - 13vmin);
+  z-index: 1;
 }
 
 .volken {
   height: 25vmin;
   position: absolute;
   bottom: 0;
+  z-index: 2;
 }
 
 .angel {
@@ -18,11 +23,12 @@
   position: absolute;
   bottom: -10px;
   left: 20vmax;
+  z-index: 3;
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 10s linear;
+  .kittens {
+    animation: kittens-spin infinite 10s linear;
   }
 
   .angel {
@@ -31,9 +37,11 @@
 }
 
 .App-header {
+  z-index: 0;
   position: relative;
   background-color: #282c34;
   min-height: 50vh;
+  max-height: 50vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -47,12 +55,12 @@
   color: #61dafb;
 }
 
-@keyframes App-logo-spin {
+@keyframes kittens-spin {
   25% {
-    transform: rotate(15deg) translate(100px,0px);
+    transform: rotate(10deg) translate(100px,0px);
   }
   75% {
-    transform: rotate(-15deg) translate(-100px,0px);
+    transform: rotate(-10deg) translate(-100px,0px);
   }
   100% {
     transform: rotate(0deg) translate(0px,0px);
@@ -97,4 +105,12 @@
   width: 50px;
   background-color: brown;
   border-radius: 50%;
+}
+
+.Blob-container {
+  position: absolute;
+  left: 2vmax;
+  top: 0;
+  border: brown solid 2px;
+  width: 95vw;
 }
