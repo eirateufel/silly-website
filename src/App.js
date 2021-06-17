@@ -5,6 +5,8 @@ import kittens from './kittens.png';
 import flower from "./flower1.png";
 import volken from './volken.png';
 import angel from './angel.png';
+import pixelBIG from "./pixelBIG.png";
+import pixelSMOL from "./pixelSMOL.png";
 import './App.css';
 import React from 'react';
 import {vmin, vmax, vw, vh} from "./lib/VminVmax";
@@ -86,6 +88,35 @@ function changeAngelAnimation (e) {
   if (e.target.classList[0] === "angel") changeAnimation (e.target)
 }
 
+function changePixelSize (e) {
+  const isBig = e.target.classList.contains("pixel-size_big") ? true : false;
+  const isMobile = vh() > vw() * 1;
+  const grid = document.getElementById("grid-container");
+  const coefficient = {
+    mobileSmall: 60,
+    mobileBig: 30,
+    pcSmall: 110,
+    pcBig: 60
+  }
+  if (isBig) {
+    e.target.classList.remove("pixel-size_big");
+    e.target.src = pixelBIG;
+    if (isMobile) setPixelSize (grid, coefficient.mobileSmall)
+    else setPixelSize (grid, coefficient.pcSmall)
+  }
+  else {
+    e.target.classList.add("pixel-size_big");
+    e.target.src = pixelSMOL;
+    if (isMobile) setPixelSize (grid, coefficient.mobileBig)
+    else setPixelSize (grid, coefficient.pcBig)
+  }
+}
+
+function setPixelSize (grid, coefficient) {
+  grid.style.gridTemplateColumns = `repeat(auto-fill, minmax(calc(100vw/${coefficient}), 1fr))`;
+  grid.style.gridAutoRows = `calc(100vw/${coefficient})`;
+}
+
 
 function App() {
   let items = [];
@@ -98,7 +129,8 @@ function App() {
         <img src={volken} className="volken" alt="clouds" id="volken"/>
         <img src={angel} className="angel" alt="angel" id="angel" onClick = {(e) => changeAngelAnimation(e)}/>
         <img src={rezin} className="rezin rezin_unchozen" alt="eraze" id="rezin" onClick = {(e) => chooseErazor(e)}/>
-        <img src={flower} className="flower" id="flower"/>
+        <img src={pixelBIG} className="pixel-size" alt="pizel-size" id="pixel-size" onClick = {(e) => changePixelSize(e)}/>
+        <img src={flower} className="flower" id="flower" alt="flowers"/>
       </header>
       <div className="grid-container" id="grid-container">
         {items}

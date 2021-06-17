@@ -29,6 +29,8 @@ if (vh() > vw() * 1) {
   document.getElementById("flower").style.top = "5px";
   document.getElementById("grid-container").style.gridTemplateColumns = "repeat(auto-fill, minmax(calc(100vw/60), 1fr))";
   document.getElementById("grid-container").style.gridAutoRows = "calc(100vw/60)";
+  document.getElementById("pixel-size").style.bottom = "5px";
+  document.getElementById("angel").style.left = "10vmax";
 }
 
 reportWebVitals();
